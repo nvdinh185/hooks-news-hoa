@@ -1,25 +1,33 @@
-import PostItem from './components/PostItem';
-import Data from './components/Data';
+import { Routes, Route, Link } from "react-router-dom";
+import HoaPage from "./pages/HoaPage";
+import NewsPage from "./pages/NewsPage";
+import HomePage from "./pages/HomePage";
 
-const App = () => {
+function App() {
+  return (
+    <>
+      <nav>
+        <ul>
+          <li>
+            <Link to='/'>Home Page</Link>
+          </li>
+          <li>
+            <Link to='/news'>News Page</Link>
+          </li>
+          <li>
+            <Link to='/hoa'>Hoa Page</Link>
+          </li>
+        </ul>
+      </nav>
 
-    return (
-        <div className='wrapper'>
-            <h1>Trang tin VinaEnter Edu</h1>
-            <ul>
-                {Data.listNews.map(function (news) {
-                    return (
-                        <PostItem
-                            key={news.id}
-                            img={news.img}
-                            title={news.title}
-                            content={news.content}
-                        />
-                    )
-                })}
-            </ul>
-        </div>
-    )
+
+      <Routes>
+        <Route path='/' element={<HomePage />} />
+        <Route path='/news' element={<NewsPage />} />
+        <Route path='/hoa' element={<HoaPage />} />
+      </Routes>
+    </>
+  );
 }
 
 export default App;
